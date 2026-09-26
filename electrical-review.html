@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Review &amp; Safety Inspection | Pristine Power Electric</title>
+  <meta name="description" content="Comprehensive electrical safety inspections, wiring reviews, and code compliance assessments in Orange County, CA by certified master electricians.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-symbol">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Pristine Power</span>
+          <span class="logo-sub">Electric</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <div class="nav-item-dropdown">
+          <a href="electrical-panels.html" class="nav-link dropdown-trigger active">
+            Electrical Services <span class="dropdown-caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="electrical-panels.html" class="dropdown-item">Electrical Panels</a>
+            <a href="ev-charger.html" class="dropdown-item">EV Charger Installation</a>
+            <a href="electrical-repairs.html" class="dropdown-item">Electrical Repairs</a>
+            <a href="emergency-services.html" class="dropdown-item">Emergency Services</a>
+          </div>
+        </div>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="tel:9496202808" class="nav-cta-btn">
+        Emergency Services Available (949) 620-2808
+      </a>
+
+      <!-- Theme Toggle Button -->
+      <button class="theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+
+      <button class="hamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <button class="mobile-dropdown-toggle">
+      <span>Electrical Services</span>
+      <span class="dropdown-caret"></span>
+    </button>
+    <div class="mobile-sub-menu">
+      <a href="electrical-panels.html">Electrical Panels</a>
+      <a href="ev-charger.html">EV Charger Installation</a>
+      <a href="electrical-repairs.html">Electrical Repairs</a>
+      <a href="emergency-services.html">Emergency Services</a>
+    </div>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-theme-row">
+      <span>Theme Mode</span>
+      <button class="theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+    <a href="tel:9496202808" class="nav-cta-btn">
+      Emergency Call (949) 620-2808
+    </a>
+  </div>
+
+  <main class="site-wrapper">
+
+    <!-- HERO SECTION -->
+    <section class="hero-service-split">
+      <div class="container">
+        <div class="hero-service-grid">
+          <div class="hero-service-content">
+            <span class="section-label section-label-gold">Electrical Review &amp; Safety Inspections in Orange County</span>
+            <h1>Comprehensive Electrical Review &amp; Diagnostics</h1>
+            <p class="hero-service-lead">Whether purchasing a new property, modernizing an older residence, or preparing for insurance renewal, a professional electrical review identifies hidden hazards, outdated wiring, and critical code violations before they become dangerous emergencies.</p>
+
+            <div class="hero-bullet-list">
+              <div class="hero-bullet-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div><strong>Whole-Home Safety Audits:</strong> In-depth thermal imaging and panel inspection to identify loose connections.</div>
+              </div>
+              <div class="hero-bullet-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div><strong>Home Buyer &amp; Seller Reviews:</strong> Detailed certified inspector reports for real estate transaction escrow requirements.</div>
+              </div>
+              <div class="hero-bullet-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div><strong>Code Compliance Verification:</strong> Validating AFCI, GFCI, smoke detector interlinks, and proper panel grounding.</div>
+              </div>
+              <div class="hero-bullet-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div><strong>Electrical Repairs &amp; Corrective Action:</strong> Immediate flat-rate remediation of all flagged safety hazards.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEAD GEN CARD -->
+          <div class="lead-gen-card">
+            <h3>Let's Get Started</h3>
+            <p class="card-caption">Schedule an electrical review with a master electrician.</p>
+
+            <form class="lead-gen-form">
+              <div class="form-group-field">
+                <input type="text" placeholder="Full Name" required>
+              </div>
+              <div class="form-group-field">
+                <input type="tel" placeholder="Phone Number" required>
+              </div>
+              <div class="form-group-field">
+                <input type="email" placeholder="Email Address" required>
+              </div>
+              <div class="form-group-field">
+                <select required>
+                  <option value="" disabled selected>Inspection Objective</option>
+                  <option>Real Estate Escrow Review</option>
+                  <option>Insurance Safety Certification</option>
+                  <option>Aging Home Wiring Assessment</option>
+                  <option>Solar or EV Capacity Audit</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-blue" style="width: 100%;">Request a Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUPON & WARNING SIGNS SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="two-col-grid align-start">
+          <div class="coupon-voucher-card">
+            <div class="coupon-discount-val">5% OFF</div>
+            <div class="coupon-discount-label">Senior &amp; Military Discount</div>
+            <p>Veterans, active military, and senior citizens receive 5% off our comprehensive electrical safety audit and review service.</p>
+            <a href="contact.html" class="btn btn-gold">Claim Offer</a>
+            <span class="coupon-terms">Valid on whole-home electrical review services.</span>
+          </div>
+
+          <div>
+            <span class="section-label">Inspection Priority Checklist</span>
+            <h2>Top Red Flags Identified in Electrical Reviews</h2>
+            <div class="divider-blue"></div>
+            <p>Our thorough inspection uncovers safety vulnerabilities before catastrophic failures occur:</p>
+
+            <div class="warning-signs-list">
+              <div class="warning-sign-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Double-tapped circuit breakers inside the main distribution panel</span>
+              </div>
+              <div class="warning-sign-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Missing GFCI protection near sinks, exterior outlets, and garage areas</span>
+              </div>
+              <div class="warning-sign-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Cloth-insulated wiring, knob-and-tube remnants, or ungrounded circuits</span>
+              </div>
+              <div class="warning-sign-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Improperly sized neutral or grounding electrode conductor connections</span>
+              </div>
+              <div class="warning-sign-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Open junction boxes with exposed wire nuts in attic or crawl spaces</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLUE BANNER -->
+    <section class="lasting-results-banner">
+      <div class="container">
+        <span class="sub-tag">Certified Safety Audits</span>
+        <h2>Get Lasting Results From Our Fast, Dependable and Effective Team.</h2>
+        <p>You receive an itemized, photographic electrical safety report with prioritized remediation recommendations and transparent flat-rate repair options.</p>
+      </div>
+    </section>
+
+    <!-- ACCORDION SECTION -->
+    <section class="section section-ice">
+      <div class="container">
+        <div class="two-col-grid align-start">
+          <div>
+            <span class="section-label">Inspection Questions</span>
+            <h2>Electrical Review Frequently Asked Questions</h2>
+            <div class="divider-blue"></div>
+            <p>Answers to questions regarding real estate inspections, safety reviews, and code updates.</p>
+          </div>
+
+          <div class="accordion-wrapper">
+            <div class="accordion-item open">
+              <div class="accordion-header">
+                <span>When should a property undergo an electrical review?</span>
+                <div class="accordion-indicator"></div>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  We recommend an electrical review before purchasing a home, prior to major remodeling, when adding high-draw loads (EV chargers, heat pumps, pools), or if a home is more than 30 years old.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <span>How does this differ from a general home inspection?</span>
+                <div class="accordion-indicator"></div>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  General home inspectors only check basic outlet operation. Our licensed master electricians open panels, test breaker calibration, inspect grounding rods, check wire gauges, and perform voltage drop load tests.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <span>Can you repair any issues discovered during the review?</span>
+                <div class="accordion-indicator"></div>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  Yes. Our service vans carry common breakers, GFCI receptacles, and wiring components so urgent safety issues can often be corrected immediately.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-label">Customer Feedback</span>
+          <h2>What Our Customers Are Saying</h2>
+          <div class="divider-blue centered"></div>
+        </div>
+
+        <div class="container-narrow" style="margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+          <div class="emergency-quote-box">
+            <p>"Pristine Power performed a full electrical review during our escrow in Irvine. Their report caught an ungrounded subpanel that the standard home inspector completely missed. Saved us thousands."</p>
+            <span class="author">Susan R. &bull; Irvine, CA</span>
+          </div>
+
+          <div class="emergency-quote-box">
+            <p>"Professional, thorough, and highly knowledgeable. They walked us through every recommendation without any pressure."</p>
+            <span class="author">Medhat H. &bull; Costa Mesa, CA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL SERVICES STRIP -->
+    <section class="services-strip-component">
+      <div class="container">
+        <div class="strip-header-row">
+          <span class="section-label">Browse Electrical Solutions</span>
+          <div class="strip-nav-arrows">
+            <button class="strip-arrow-btn" id="stripPrev" aria-label="Previous service">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="strip-arrow-btn" id="stripNext" aria-label="Next service">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="service-cards-track" id="servicesTrack">
+          <a href="electrical-panels.html" class="service-strip-card">
+            <div>
+              <div class="strip-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="7" x2="8" y2="17"/><line x1="12" y1="7" x2="12" y2="17"/><line x1="16" y1="7" x2="16" y2="17"/></svg>
+              </div>
+              <h4>Electric Panels</h4>
+            </div>
+            <span class="strip-action-link">View Service &rarr;</span>
+          </a>
+
+          <a href="ev-charger.html" class="service-strip-card">
+            <div>
+              <div class="strip-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a2 2 0 01-2-2V8a2 2 0 012-2h12a2 2 0 012 2v2"/><rect x="12" y="14" width="10" height="8" rx="1"/><line x1="17" y1="14" x2="17" y2="10"/></svg>
+              </div>
+              <h4>EV Charger Installation</h4>
+            </div>
+            <span class="strip-action-link">View Service &rarr;</span>
+          </a>
+
+          <a href="electrical-repairs.html" class="service-strip-card active">
+            <div>
+              <div class="strip-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h4>Electric Repairs</h4>
+            </div>
+            <span class="strip-action-link">View Service &rarr;</span>
+          </a>
+
+          <a href="emergency-services.html" class="service-strip-card">
+            <div>
+              <div class="strip-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h4>Emergency Services</h4>
+            </div>
+            <span class="strip-action-link">View Service &rarr;</span>
+          </a>
+
+          <a href="contact.html" class="service-strip-card">
+            <div>
+              <div class="strip-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <h4>Wiring &amp; Rewiring</h4>
+            </div>
+            <span class="strip-action-link">View Service &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT SETS US APART -->
+    <section class="section">
+      <div class="container">
+        <div class="two-col-grid align-start">
+          <div>
+            <span class="section-label">Engineering Diligence</span>
+            <h2>What Sets Pristine Power Electric Apart?</h2>
+            <div class="divider-blue"></div>
+            <p>Our comprehensive electrical reviews provide actionable clarity and protection for your property:</p>
+
+            <div class="apart-list-stack">
+              <div class="apart-feature-bar">
+                <strong>Certified Master Electricians</strong>
+                <span>Every review is performed by an experienced journeyman with in-depth code knowledge.</span>
+              </div>
+              <div class="apart-feature-bar">
+                <strong>Thermal Infrared Diagnostics</strong>
+                <span>We detect concealed hotspots and resistive connections without opening walls.</span>
+              </div>
+              <div class="apart-feature-bar">
+                <strong>Itemized Written Reports</strong>
+                <span>Clear priority ranking of safety risks, code non-compliances, and repair options.</span>
+              </div>
+              <div class="apart-feature-bar">
+                <strong>Zero High-Pressure Sales</strong>
+                <span>Objective findings backed by technical code citations and fair flat-rate pricing.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-showcase-box" style="background-color: var(--navy-surface); color: var(--white); border-color: var(--navy-border);">
+            <div class="showcase-icon-wrap" style="background-color: var(--navy-deep); border-color: var(--blue-accent); color: var(--blue-accent);">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="showcase-headline" style="color: var(--white);">Certified Safety Auditing</div>
+            <p class="showcase-desc" style="color: var(--text-muted-dk);">Protecting lives, properties, and equipment through thorough electrical safety reviews.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <h3>Pristine Power</h3>
+          <span class="brand-sub">Electric</span>
+          <a href="tel:9496202808" class="footer-phone-link">(949) 620-2808</a>
+          <p>530 Technology Dr, Suite 100<br>Irvine, CA 92618</p>
+          <p style="margin-top: 6px;">License #1143169</p>
+
+          <div class="bbb-badge-box">
+            <span class="bbb-symbol">BBB</span>
+            <span class="bbb-text">Accredited Business</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="emergency-services.html">Emergency Services</a></li>
+            <li><a href="electrical-panels.html">Electrical Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-nav-list">
+            <li><a href="electrical-panels.html">Electrical Panels</a></li>
+            <li><a href="ev-charger.html">EV Charger Installation</a></li>
+            <li><a href="electrical-repairs.html">Electrical Repairs</a></li>
+            <li><a href="emergency-services.html">Emergency Services</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2025 Pristine Power Electric. All rights reserved. Developed by Clevrly Marketing.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
