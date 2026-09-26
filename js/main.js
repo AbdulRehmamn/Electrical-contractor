@@ -155,56 +155,87 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  /* ---- Form Submission Handlers ---- */
+  /* ---- Form Submission Handlers (Web3Forms Integration) ---- */
   // 1. Lead gen quote forms on service pages
   var leadGenForms = document.querySelectorAll('.lead-gen-form');
-  leadGenForms.forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+  leadGenForms.forEach(function (serviceForm) {
+    serviceForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        var origText = btn.textContent;
-        btn.textContent = 'Request Received - Calling You Shortly';
-        btn.disabled = true;
-        btn.style.backgroundColor = '#059669';
-        btn.style.borderColor = '#059669';
+      var submitBtn = serviceForm.querySelector('button[type="submit"]');
+      var originalText = submitBtn ? submitBtn.textContent : 'Request a Quote';
 
-        setTimeout(function () {
-          form.reset();
-          btn.textContent = origText;
-          btn.disabled = false;
-          btn.style.backgroundColor = '';
-          btn.style.borderColor = '';
-        }, 4000);
+      var formData = new FormData(serviceForm);
+      formData.append("access_key", "042e39b7-26ac-42a1-913d-2b119e93a43e");
+
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
+
+      try {
+        var response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        var data = await response.json();
+
+        if (response.ok) {
+          alert("Success! Your message has been sent.");
+          serviceForm.reset();
+        } else {
+          alert("Error: " + (data.message || "Failed to submit."));
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
       }
     });
   });
 
-  // 2. Contact page form
-  var contactForm = document.getElementById('contactForm');
-  var contactAlert = document.getElementById('contactAlert');
-
+  // 2. Contact page form (id="form")
+  var contactForm = document.getElementById('form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+    var submitBtn = contactForm.querySelector('button[type="submit"]');
 
-        setTimeout(function () {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      formData.append("access_key", "042e39b7-26ac-42a1-913d-2b119e93a43e");
+
+      const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
+
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Success! Your message has been sent.");
           contactForm.reset();
+        } else {
+          alert("Error: " + (data.message || "Failed to submit."));
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-          if (contactAlert) {
-            contactAlert.className = 'form-status-alert success';
-            contactAlert.textContent = 'Thank you for contacting Pristine Power Electric. Your message has been sent, and an experienced team member will reach out promptly.';
-            setTimeout(function () {
-              contactAlert.className = 'form-status-alert';
-              contactAlert.textContent = '';
-            }, 6000);
-          }
-        }, 1000);
+        }
       }
     });
   }
