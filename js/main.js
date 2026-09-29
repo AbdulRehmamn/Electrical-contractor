@@ -165,7 +165,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var originalText = submitBtn ? submitBtn.textContent : 'Request a Quote';
 
       var formData = new FormData(serviceForm);
-      formData.append("access_key", "042e39b7-26ac-42a1-913d-2b119e93a43e");
+      var object = Object.fromEntries(formData.entries());
+      object.access_key = "0e1546d3-2a90-4060-ab68-e11265962b83".trim();
+      object.from_name = "Duarte Electrical Services INC";
+      if (!object.subject) {
+        object.subject = "New Quote Request - Duarte Electrical Services";
+      }
 
       if (submitBtn) {
         submitBtn.textContent = "Sending...";
@@ -175,19 +180,23 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         var response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          body: formData
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(object)
         });
 
         var data = await response.json();
 
-        if (response.ok) {
-          alert("Success! Your message has been sent.");
+        if (response.ok && data.success) {
+          alert("Success! Your message has been sent to Duarte Electrical Services.");
           serviceForm.reset();
         } else {
-          alert("Error: " + (data.message || "Failed to submit."));
+          alert("Error: " + (data.message || "Failed to submit. Please try again or call (619) 805-6267."));
         }
       } catch (error) {
-        alert("Something went wrong. Please try again.");
+        alert("Something went wrong submitting your request. Please call (619) 805-6267 directly.");
       } finally {
         if (submitBtn) {
           submitBtn.textContent = originalText;
@@ -200,41 +209,50 @@ document.addEventListener('DOMContentLoaded', function () {
   // 2. Contact page form (id="form")
   var contactForm = document.getElementById('form');
   if (contactForm) {
-    var submitBtn = contactForm.querySelector('button[type="submit"]');
+    var contactSubmitBtn = contactForm.querySelector('button[type="submit"]');
 
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const formData = new FormData(contactForm);
-      formData.append("access_key", "042e39b7-26ac-42a1-913d-2b119e93a43e");
+      var formData = new FormData(contactForm);
+      var object = Object.fromEntries(formData.entries());
+      object.access_key = "0e1546d3-2a90-4060-ab68-e11265962b83".trim();
+      object.from_name = "Duarte Electrical Services INC";
+      if (!object.subject) {
+        object.subject = "New Contact Inquiry - Duarte Electrical Services";
+      }
 
-      const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
+      var originalText = contactSubmitBtn ? contactSubmitBtn.textContent : 'Send Message';
 
-      if (submitBtn) {
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
+      if (contactSubmitBtn) {
+        contactSubmitBtn.textContent = "Sending...";
+        contactSubmitBtn.disabled = true;
       }
 
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        var response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          body: formData
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(object)
         });
 
-        const data = await response.json();
+        var data = await response.json();
 
-        if (response.ok) {
-          alert("Success! Your message has been sent.");
+        if (response.ok && data.success) {
+          alert("Success! Your message has been sent to Duarte Electrical Services.");
           contactForm.reset();
         } else {
-          alert("Error: " + (data.message || "Failed to submit."));
+          alert("Error: " + (data.message || "Failed to submit. Please try again or call (619) 805-6267."));
         }
       } catch (error) {
-        alert("Something went wrong. Please try again.");
+        alert("Something went wrong submitting your request. Please call (619) 805-6267 directly.");
       } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
+        if (contactSubmitBtn) {
+          contactSubmitBtn.textContent = originalText;
+          contactSubmitBtn.disabled = false;
         }
       }
     });
