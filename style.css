@@ -741,7 +741,7 @@ html.dark-mode .footer-logo-img {
   position: relative;
   background: 
     linear-gradient(135deg, rgba(22, 25, 27, 0.90) 0%, rgba(31, 35, 38, 0.78) 50%, rgba(18, 20, 22, 0.92) 100%),
-    url('../images/hero-electrician.jpg') center right / cover no-repeat;
+    url('images/hero-electrician.jpg') center right / cover no-repeat;
   color: var(--white);
   padding: 110px 0 130px;
   overflow: hidden;
@@ -1387,7 +1387,7 @@ html.dark-mode .footer-logo-img {
   position: relative;
   background: 
     linear-gradient(135deg, rgba(22, 25, 27, 0.90) 0%, rgba(31, 35, 38, 0.76) 50%, rgba(18, 20, 22, 0.92) 100%),
-    url('../images/about-electrician.jpg') center center / cover no-repeat;
+    url('images/about-electrician.jpg') center center / cover no-repeat;
   color: var(--white);
   padding: 110px 0;
   text-align: center;
@@ -1398,7 +1398,7 @@ html.dark-mode .footer-logo-img {
   position: relative;
   background: 
     linear-gradient(135deg, rgba(22, 25, 27, 0.90) 0%, rgba(31, 35, 38, 0.76) 50%, rgba(18, 20, 22, 0.92) 100%),
-    url('../images/contact-electrician.jpg') center center / cover no-repeat;
+    url('images/contact-electrician.jpg') center center / cover no-repeat;
   color: var(--white);
   padding: 100px 0;
   text-align: center;
@@ -2620,12 +2620,11 @@ html.dark-mode .accordion-wrapper {
 html.dark-mode .accordion-item {
   background-color: #242424;
   border-bottom-color: #343A40;
-  padding: 8px;
-
+  padding: 17px;
 }
-.dark-mode .accordion-header {
-  background-color: #242424;
 
+html.dark-mode .accordion-header {
+  background-color: #242424;
 }
 
 /* Showcase & Visual Boxes */

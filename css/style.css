@@ -2620,6 +2620,7 @@ html.dark-mode .accordion-wrapper {
 html.dark-mode .accordion-item {
   background-color: #242424;
   border-bottom-color: #343A40;
+  padding: 17px;
 }
 
 html.dark-mode .accordion-header {
