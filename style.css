@@ -567,19 +567,28 @@ html.dark-mode .footer-logo-img {
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: none;
+  width: 40px;
+  height: 40px;
+  background-color: var(--charcoal-surface);
+  border: 1px solid var(--charcoal-border);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.hamburger:hover {
+  background-color: #2D3237;
+  border-color: var(--gold);
 }
 
 .hamburger span {
   display: block;
-  width: 24px;
-  height: 2.5px;
+  width: 20px;
+  height: 2px;
   background-color: #FAFAF7;
   border-radius: 2px;
   transition: var(--transition);
@@ -604,10 +613,13 @@ html.dark-mode .footer-logo-img {
   right: 0;
   background-color: var(--charcoal-main);
   border-bottom: 2px solid var(--charcoal-border);
-  padding: 20px 28px 32px;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+  padding: 16px 20px 28px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
   z-index: 999;
   flex-direction: column;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav.open {
@@ -2110,13 +2122,82 @@ html.dark-mode .footer-logo-img {
 }
 
 @media (max-width: 860px) {
-  .nav-menu,
-  .nav-cta-btn {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .navbar {
+    height: 64px;
+  }
+
+  .navbar .container {
+    padding-left: 14px;
+    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: calc(100% - 95px);
+    flex-shrink: 1;
+  }
+
+  .brand-logo-img {
+    height: 38px;
+    max-height: 38px;
+    width: auto;
+    max-width: 135px;
+    object-fit: contain;
+  }
+
+  /* Hide redundant duplicate logo text on mobile so hamburger & toggle fit cleanly */
+  .brand-logo .logo-text {
+    display: none !important;
+  }
+
+  .nav-menu {
     display: none;
+  }
+
+  .nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .nav-right-actions .nav-cta-btn {
+    display: none !important;
+  }
+
+  .mobile-nav .nav-cta-btn {
+    display: flex !important;
+  }
+
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
   }
 
   .hamburger {
     display: flex;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    padding: 6px;
+  }
+
+  .site-wrapper {
+    padding-top: 64px;
   }
 
   .emergency-card-grid,
