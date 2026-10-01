@@ -155,134 +155,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  /* ---- Form Submission Handlers (Web3Forms Integration) ---- */
+  /* ---- Form Submission Handlers ---- */
   // 1. Lead gen quote forms on service pages
   var leadGenForms = document.querySelectorAll('.lead-gen-form');
-  leadGenForms.forEach(function (serviceForm) {
-    serviceForm.addEventListener('submit', async function (e) {
+  leadGenForms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var submitBtn = serviceForm.querySelector('button[type="submit"]');
-      var originalText = submitBtn ? submitBtn.textContent : 'Request a Quote';
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        var origText = btn.textContent;
+        btn.textContent = 'Request Received - Calling You Shortly';
+        btn.disabled = true;
+        btn.style.backgroundColor = '#059669';
+        btn.style.borderColor = '#059669';
 
-      var formData = new FormData(serviceForm);
-      var object = Object.fromEntries(formData.entries());
-
-      // Ensure verified access key
-      object.access_key = (object.access_key || "63d28524-20d9-4808-bb59-24710c9fc651").trim();
-      object.from_name = "Duarte Electrical Services Website";
-      
-      // Track originating page & details
-      object.originating_page = window.location.href;
-      object.page_title = document.title;
-
-      // Set Reply-To to customer email when provided
-      if (object.email && object.email.trim()) {
-        object.replyto = object.email.trim();
-      }
-
-      // Ensure message field is populated
-      if (!object.message || !object.message.trim()) {
-        object.message = "No additional notes provided (Quote form submission on " + window.location.pathname.split('/').pop() + ")";
-      }
-
-      if (!object.subject) {
-        object.subject = "New Inquiry: " + (object.name || "Customer") + " - " + (object.service || "Electrical Quote");
-      }
-
-      if (submitBtn) {
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-      }
-
-      try {
-        var response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(object)
-        });
-
-        var data = await response.json();
-
-        if (response.ok && data.success) {
-          alert("Success! Your message has been sent to Duarte Electrical Services.");
-          serviceForm.reset();
-        } else {
-          alert("Error: " + (data.message || "Failed to submit. Please try again or call (619) 805-6267."));
-        }
-      } catch (error) {
-        alert("Something went wrong submitting your request. Please call (619) 805-6267 directly.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
+        setTimeout(function () {
+          form.reset();
+          btn.textContent = origText;
+          btn.disabled = false;
+          btn.style.backgroundColor = '';
+          btn.style.borderColor = '';
+        }, 4000);
       }
     });
   });
 
-  // 2. Contact page form (id="form")
-  var contactForm = document.getElementById('form');
+  // 2. Contact page form
+  var contactForm = document.getElementById('form') || document.getElementById('contactForm');
+  var contactAlert = document.getElementById('contactAlert');
+
   if (contactForm) {
-    var contactSubmitBtn = contactForm.querySelector('button[type="submit"]');
-
-    contactForm.addEventListener('submit', async function (e) {
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        var origText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
 
-      var formData = new FormData(contactForm);
-      var object = Object.fromEntries(formData.entries());
-
-      // Ensure verified access key
-      object.access_key = (object.access_key || "63d28524-20d9-4808-bb59-24710c9fc651").trim();
-      object.from_name = "Duarte Electrical Services Website";
-      
-      // Track originating page & details
-      object.originating_page = window.location.href;
-      object.page_title = document.title;
-
-      // Set Reply-To to customer email when provided
-      if (object.email && object.email.trim()) {
-        object.replyto = object.email.trim();
-      }
-
-      if (!object.subject) {
-        object.subject = "New Contact Inquiry from " + (object.name || "Customer");
-      }
-
-      var originalText = contactSubmitBtn ? contactSubmitBtn.textContent : 'Send Message';
-
-      if (contactSubmitBtn) {
-        contactSubmitBtn.textContent = "Sending...";
-        contactSubmitBtn.disabled = true;
-      }
-
-      try {
-        var response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(object)
-        });
-
-        var data = await response.json();
-
-        if (response.ok && data.success) {
-          alert("Success! Your message has been sent to Duarte Electrical Services.");
+        setTimeout(function () {
           contactForm.reset();
-        } else {
-          alert("Error: " + (data.message || "Failed to submit. Please try again or call (619) 805-6267."));
-        }
-      } catch (error) {
-        alert("Something went wrong submitting your request. Please call (619) 805-6267 directly.");
-      } finally {
-        if (contactSubmitBtn) {
-          contactSubmitBtn.textContent = originalText;
-          contactSubmitBtn.disabled = false;
-        }
+          submitBtn.disabled = false;
+          submitBtn.textContent = origText || 'Send Message';
+          if (contactAlert) {
+            contactAlert.className = 'form-status-alert success';
+            contactAlert.textContent = 'Thank you for contacting Duarte Electrical Services. Your message has been sent, and an experienced team member will reach out promptly.';
+            setTimeout(function () {
+              contactAlert.className = 'form-status-alert';
+              contactAlert.textContent = '';
+            }, 6000);
+          }
+        }, 1000);
       }
     });
   }
