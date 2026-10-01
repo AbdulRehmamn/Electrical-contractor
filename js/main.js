@@ -155,57 +155,90 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  /* ---- Form Submission Handlers ---- */
-  // 1. Lead gen quote forms on service pages
-  var leadGenForms = document.querySelectorAll('.lead-gen-form');
-  leadGenForms.forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        var origText = btn.textContent;
-        btn.textContent = 'Request Received - Calling You Shortly';
-        btn.disabled = true;
-        btn.style.backgroundColor = '#059669';
-        btn.style.borderColor = '#059669';
+  /* ---- Form Submission Handlers (Web3Forms Integration) ---- */
+  const ACCESS_KEY = "63d28524-20d9-4808-bb59-24710c9fc651";
 
-        setTimeout(function () {
-          form.reset();
-          btn.textContent = origText;
-          btn.disabled = false;
-          btn.style.backgroundColor = '';
-          btn.style.borderColor = '';
-        }, 4000);
+  // 1. Lead gen quote forms on service pages
+  const leadGenForms = document.querySelectorAll('.lead-gen-form');
+  leadGenForms.forEach((serviceForm) => {
+    serviceForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = serviceForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : "Request a Quote";
+
+      const formData = new FormData(serviceForm);
+      formData.set("access_key", ACCESS_KEY);
+
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          alert("Success! Your message has been sent.");
+          serviceForm.reset();
+        } else {
+          alert("Error: " + (data.message || "Failed to submit."));
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
       }
     });
   });
 
-  // 2. Contact page form
-  var contactForm = document.getElementById('form') || document.getElementById('contactForm');
-  var contactAlert = document.getElementById('contactAlert');
+  // 2. Contact page form (id="form")
+  const form = document.getElementById('form');
+  if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        var origText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
 
-        setTimeout(function () {
-          contactForm.reset();
+      const formData = new FormData(form);
+      formData.set("access_key", ACCESS_KEY);
+
+      const originalText = submitBtn ? submitBtn.textContent : "Send Message";
+
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          alert("Success! Your message has been sent.");
+          form.reset();
+        } else {
+          alert("Error: " + (data.message || "Failed to submit."));
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
           submitBtn.disabled = false;
-          submitBtn.textContent = origText || 'Send Message';
-          if (contactAlert) {
-            contactAlert.className = 'form-status-alert success';
-            contactAlert.textContent = 'Thank you for contacting Duarte Electrical Services. Your message has been sent, and an experienced team member will reach out promptly.';
-            setTimeout(function () {
-              contactAlert.className = 'form-status-alert';
-              contactAlert.textContent = '';
-            }, 6000);
-          }
-        }, 1000);
+        }
       }
     });
   }
