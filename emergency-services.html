@@ -164,10 +164,7 @@
 
             <form class="lead-gen-form">
               <input type="hidden" name="access_key" value="63d28524-20d9-4808-bb59-24710c9fc651">
-              <input type="hidden" name="to_email" value="Martin@duarteelectric.com">
-              <input type="hidden" name="email_to" value="Martin@duarteelectric.com">
-              <input type="hidden" name="recipient" value="Martin@duarteelectric.com">
-              <input type="hidden" name="subject" value="URGENT Emergency Request for Des@duarteelectric.com - Duarte Electrical Services">
+              <input type="hidden" name="subject" value="URGENT Emergency Service Request - Duarte Electrical Services">
               <div class="form-group-field">
                 <input type="text" name="name" placeholder="Full Name" required>
               </div>
@@ -178,6 +175,9 @@
                 <input type="text" name="address" placeholder="Street Address / City" required>
               </div>
               <div class="form-group-field">
+                <input type="email" name="email" placeholder="Email Address (optional)">
+              </div>
+              <div class="form-group-field">
                 <select name="service" required>
                   <option value="" disabled selected>Emergency Type</option>
                   <option>Sparking or Arcing Electrical Panel</option>
@@ -186,6 +186,9 @@
                   <option>Flooded or Wet Electrical Equipment</option>
                   <option>Exposed or Fallen Wiring</option>
                 </select>
+              </div>
+              <div class="form-group-field">
+                <textarea name="message" placeholder="Emergency hazard details or notes (optional)" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-blue" style="width: 100%;">Dispatch Electrician</button>
             </form>

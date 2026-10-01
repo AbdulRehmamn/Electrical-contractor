@@ -166,13 +166,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData(serviceForm);
       var object = Object.fromEntries(formData.entries());
-      object.access_key = "63d28524-20d9-4808-bb59-24710c9fc651".trim();
-      object.to_email = "Martin@duarteelectric.com";
-      object.email_to = "Martin@duarteelectric.com";
-      object.recipient = "Martin@duarteelectric.com";
-      object.from_name = "Duarte Electrical Services INC";
+
+      // Ensure verified access key
+      object.access_key = (object.access_key || "63d28524-20d9-4808-bb59-24710c9fc651").trim();
+      object.from_name = "Duarte Electrical Services Website";
+      
+      // Track originating page & details
+      object.originating_page = window.location.href;
+      object.page_title = document.title;
+
+      // Set Reply-To to customer email when provided
+      if (object.email && object.email.trim()) {
+        object.replyto = object.email.trim();
+      }
+
+      // Ensure message field is populated
+      if (!object.message || !object.message.trim()) {
+        object.message = "No additional notes provided (Quote form submission on " + window.location.pathname.split('/').pop() + ")";
+      }
+
       if (!object.subject) {
-        object.subject = "New Quote Request - Duarte Electrical Services";
+        object.subject = "New Inquiry: " + (object.name || "Customer") + " - " + (object.service || "Electrical Quote");
       }
 
       if (submitBtn) {
@@ -219,13 +233,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData(contactForm);
       var object = Object.fromEntries(formData.entries());
-      object.access_key = "63d28524-20d9-4808-bb59-24710c9fc651".trim();
-      object.to_email = "Martin@duarteelectric.com";
-      object.email_to = "Martin@duarteelectric.com";
-      object.recipient = "Martin@duarteelectric.com";
-      object.from_name = "Duarte Electrical Services INC";
+
+      // Ensure verified access key
+      object.access_key = (object.access_key || "63d28524-20d9-4808-bb59-24710c9fc651").trim();
+      object.from_name = "Duarte Electrical Services Website";
+      
+      // Track originating page & details
+      object.originating_page = window.location.href;
+      object.page_title = document.title;
+
+      // Set Reply-To to customer email when provided
+      if (object.email && object.email.trim()) {
+        object.replyto = object.email.trim();
+      }
+
       if (!object.subject) {
-        object.subject = "New Contact Inquiry - Duarte Electrical Services";
+        object.subject = "New Contact Inquiry from " + (object.name || "Customer");
       }
 
       var originalText = contactSubmitBtn ? contactSubmitBtn.textContent : 'Send Message';
