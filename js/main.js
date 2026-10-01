@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData(serviceForm);
       var object = Object.fromEntries(formData.entries());
-      object.access_key = "7cff698c-9b3b-4dd3-83e4-18a86f7619f7".trim();
+      object.access_key = "63d28524-20d9-4808-bb59-24710c9fc651".trim();
       object.from_name = "Duarte Electrical Services INC";
       if (!object.subject) {
         object.subject = "New Quote Request - Duarte Electrical Services";
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData(contactForm);
       var object = Object.fromEntries(formData.entries());
-      object.access_key = "7cff698c-9b3b-4dd3-83e4-18a86f7619f7".trim();
+      object.access_key = "63d28524-20d9-4808-bb59-24710c9fc651".trim();
       object.from_name = "Duarte Electrical Services INC";
       if (!object.subject) {
         object.subject = "New Contact Inquiry - Duarte Electrical Services";
