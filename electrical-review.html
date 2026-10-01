@@ -162,8 +162,7 @@
             <h3>Let's Get Started</h3>
             <p class="card-caption">Schedule an electrical review with a master electrician.</p>
 
-            <form class="lead-gen-form">
-              <input type="hidden" name="access_key" value="63d28524-20d9-4808-bb59-24710c9fc651">
+            <form onsubmit="return false;" class="lead-gen-form">
               <input type="hidden" name="subject" value="Electrical Review Request - Duarte Electrical Services">
               <div class="form-group-field">
                 <input type="text" name="name" placeholder="Full Name" required>
@@ -186,7 +185,8 @@
               <div class="form-group-field">
                 <textarea name="message" placeholder="Project details or scope (optional)" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-blue" style="width: 100%;">Request a Quote</button>
+              <button disabled type="submit" class="btn btn-blue" style="width: 100%;">Request a Quote</button>
+            <noscript>Please email Martin@duarteelectric.com or call (619) 805-6267 to submit your inquiry.</noscript>
             </form>
           </div>
         </div>
@@ -493,6 +493,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/form-config.js?v=martin-1"></script>
+  <script src="js/main.js?v=martin-1"></script>
 </body>
 </html>

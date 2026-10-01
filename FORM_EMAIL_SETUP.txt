@@ -1,0 +1,22 @@
+MARTIN EMAIL DELIVERY SETUP — REQUIRED BEFORE DEPLOYMENT
+
+The previous Web3Forms key has been removed from all six forms.
+The supplied ZIP does NOT contain a verified key for Martin's inbox.
+
+1. Open https://web3forms.com/ and request an access key using
+   Martin@duarteelectric.com. Complete verification from that inbox.
+2. Open js/form-config.js. Paste that key between the empty quotes
+   beside accessKey. This one setting controls all six forms.
+3. Confirm in Web3Forms that the key delivers to Martin only and remove
+   any provider-side CC, forwarding, or other notification recipients.
+4. Push the updated files to your Vercel production branch and wait for
+   the deployment to finish. No Cloudflare DNS changes are needed.
+5. Submit one clearly labeled test on each page: contact.html,
+   electrical-panels.html, electrical-repairs.html, electrical-review.html,
+   emergency-services.html, ev-charger.html.
+6. Confirm each message arrives in Martin's inbox (also check spam).
+   A successful API response is not proof of inbox delivery.
+
+Until configured, forms are disabled and show direct contact details.
+Design and public business contact addresses are otherwise preserved.
+No real submissions or inbox verification were performed in this update.

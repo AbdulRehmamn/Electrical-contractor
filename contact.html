@@ -149,8 +149,7 @@
 
             <div id="contactAlert" class="form-status-alert"></div>
 
-            <form id="form" class="contact-form">
-              <input type="hidden" name="access_key" value="63d28524-20d9-4808-bb59-24710c9fc651">
+            <form onsubmit="return false;" id="form" class="contact-form">
               <input type="hidden" name="subject" value="New Service Inquiry - Duarte Electrical Services">
               <input type="hidden" name="from_name" value="Duarte Electrical Services INC Website">
               <div class="form-row-2col">
@@ -196,9 +195,10 @@
                 <textarea name="message" rows="5" placeholder="Describe your project, voltage requirements, equipment specifications, or timeline..."></textarea>
               </div>
 
-              <button type="submit" class="btn btn-blue" style="width: 100%; margin-top: 10px;">
+              <button disabled type="submit" class="btn btn-blue" style="width: 100%; margin-top: 10px;">
                 Send Message
               </button>
+            <noscript>Please email Martin@duarteelectric.com or call (619) 805-6267 to submit your inquiry.</noscript>
             </form>
           </div>
 
@@ -330,6 +330,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/form-config.js?v=martin-1"></script>
+  <script src="js/main.js?v=martin-1"></script>
 </body>
 </html>

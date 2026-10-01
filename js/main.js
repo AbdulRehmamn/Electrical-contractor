@@ -155,92 +155,56 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  /* ---- Form Submission Handlers (Web3Forms Integration) ---- */
-  const ACCESS_KEY = "63d28524-20d9-4808-bb59-24710c9fc651";
-
-  // 1. Lead gen quote forms on service pages
-  const leadGenForms = document.querySelectorAll('.lead-gen-form');
-  leadGenForms.forEach((serviceForm) => {
-    serviceForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const submitBtn = serviceForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.textContent : "Request a Quote";
-
-      const formData = new FormData(serviceForm);
-      formData.set("access_key", ACCESS_KEY);
-
-      if (submitBtn) {
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-      }
-
+  /* All forms use the one inbox-linked key in form-config.js. */
+  document.querySelectorAll('.lead-gen-form, #form').forEach(function (form) {
+    const button = form.querySelector('button[type="submit"]');
+    const config = window.DUARTE_FORMS || {};
+    const key = (config.accessKey || '').trim();
+    const ready = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key);
+    const status = document.createElement('p');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    form.appendChild(status);
+    if (!ready) {
+      status.textContent = 'Online requests are temporarily unavailable. Please email Martin@duarteelectric.com or call (619) 805-6267.';
+      return;
+    }
+    if (button) button.disabled = false;
+    let busy = false;
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (busy || !form.reportValidity()) return;
+      busy = true;
+      const original = button ? button.textContent : '';
+      const data = new FormData(form);
+      ['to_email', 'email_to', 'recipient', 'ccemail', 'bcc', 'bccemail', 'redirect', 'webhook'].forEach(name => data.delete(name));
+      data.set('access_key', key);
+      data.set('from_name', 'Duarte Electrical Services INC');
+      data.set('source_page', window.location.origin + window.location.pathname);
+      if (!data.get('subject')) data.set('subject', 'New Website Inquiry - Duarte Electrical Services');
+      if (data.get('email')) data.set('replyto', data.get('email'));
+      if (button) { button.disabled = true; button.textContent = 'Sending...'; }
+      status.textContent = 'Sending your request...';
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20000);
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', body: data, signal: controller.signal,
+          headers: { Accept: 'application/json' }
         });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          alert("Success! Your message has been sent.");
-          serviceForm.reset();
-        } else {
-          alert("Error: " + (data.message || "Failed to submit."));
-        }
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error('Submission rejected');
+        status.textContent = 'Thank you! Your request has been submitted successfully.';
+        form.reset();
       } catch (error) {
-        alert("Something went wrong. Please try again.");
+        status.textContent = error.name === 'AbortError'
+          ? 'Delivery could not be confirmed. Please contact Martin@duarteelectric.com before resubmitting.'
+          : 'Your request could not be confirmed. Please try again or email Martin@duarteelectric.com.';
       } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
+        clearTimeout(timer);
+        busy = false;
+        if (button) { button.disabled = false; button.textContent = original; }
       }
     });
   });
-
-  // 2. Contact page form (id="form")
-  const form = document.getElementById('form');
-  if (form) {
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      formData.set("access_key", ACCESS_KEY);
-
-      const originalText = submitBtn ? submitBtn.textContent : "Send Message";
-
-      if (submitBtn) {
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-      }
-
-      try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          alert("Success! Your message has been sent.");
-          form.reset();
-        } else {
-          alert("Error: " + (data.message || "Failed to submit."));
-        }
-      } catch (error) {
-        alert("Something went wrong. Please try again.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
-      }
-    });
-  }
-
 });

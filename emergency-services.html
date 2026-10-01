@@ -162,8 +162,7 @@
             <h3>Emergency Dispatch</h3>
             <p class="card-caption">For immediate assistance, call <a href="tel:6198056267" style="color: var(--blue-accent); font-weight: 700;">(619) 805-6267</a> or submit below.</p>
 
-            <form class="lead-gen-form">
-              <input type="hidden" name="access_key" value="63d28524-20d9-4808-bb59-24710c9fc651">
+            <form onsubmit="return false;" class="lead-gen-form">
               <input type="hidden" name="subject" value="URGENT Emergency Service Request - Duarte Electrical Services">
               <div class="form-group-field">
                 <input type="text" name="name" placeholder="Full Name" required>
@@ -190,7 +189,8 @@
               <div class="form-group-field">
                 <textarea name="message" placeholder="Emergency hazard details or notes (optional)" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-blue" style="width: 100%;">Dispatch Electrician</button>
+              <button disabled type="submit" class="btn btn-blue" style="width: 100%;">Dispatch Electrician</button>
+            <noscript>Please email Martin@duarteelectric.com or call (619) 805-6267 to submit your inquiry.</noscript>
             </form>
           </div>
         </div>
@@ -497,6 +497,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/form-config.js?v=martin-1"></script>
+  <script src="js/main.js?v=martin-1"></script>
 </body>
 </html>
