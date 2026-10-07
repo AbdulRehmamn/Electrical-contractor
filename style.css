@@ -2037,7 +2037,8 @@ html.dark-mode .footer-logo-img {
   margin-bottom: 14px;
 }
 
-.about-contact-name {
+.about-contact-name,
+.about-detail-val {
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--navy-deep);
@@ -2352,6 +2353,7 @@ html.dark-mode .about-quote-text,
 html.dark-mode .about-lead-statement,
 html.dark-mode .about-solutions-title,
 html.dark-mode .about-contact-name,
+html.dark-mode .about-detail-val,
 html.dark-mode .lead-gen-card,
 html.dark-mode .lead-gen-card h3,
 html.dark-mode .lead-gen-card p,
