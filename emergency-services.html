@@ -16,6 +16,16 @@
         if (localStorage.getItem('theme') === 'dark') {
           document.documentElement.classList.add('dark-mode');
         }
+        if (window.location.protocol !== 'file:') {
+          var path = window.location.pathname;
+          var page = path.split('/').pop() || 'index.html';
+          window.__DUARTE_INITIAL_PAGE__ = page;
+          var cleanBase = path.replace(/[^/]*$/, '') || '/';
+          window.__DUARTE_BASE_PATH__ = cleanBase;
+          if (path !== cleanBase) {
+            window.history.replaceState({ page: page }, '', cleanBase);
+          }
+        }
       } catch (e) {}
     })();
   </script>
@@ -497,7 +507,7 @@
     </div>
   </footer>
 
-  <script src="js/form-config.js?v=martin-1"></script>
-  <script src="js/main.js?v=martin-1"></script>
+  <script src="js/form-config.js?v=martin-2"></script>
+  <script src="js/main.js?v=martin-2"></script>
 </body>
 </html>
