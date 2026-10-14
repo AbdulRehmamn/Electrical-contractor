@@ -1064,6 +1064,51 @@ html.dark-mode .footer-logo-img {
   margin-top: 6px;
 }
 
+.partner-logo-box .partner-name {
+  font-size: 1.18rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-top: 14px;
+}
+
+.partner-logo-img-wrap {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logo-img-wrap img {
+  max-height: 52px;
+  max-width: 190px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.partner-logo-box:hover .partner-logo-img-wrap img {
+  transform: scale(1.04);
+}
+
+.partner-execs-img {
+  filter: brightness(0);
+}
+
+.partner-link-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
+}
+
+.partner-logo-box:hover .partner-link-text {
+  color: var(--gold);
+}
+
 /* ---- ACCORDION (LUXURY STYLE) ---- */
 .accordion-wrapper {
   display: flex;
@@ -2612,6 +2657,26 @@ html.dark-mode .emergency-quote-box {
 html.dark-mode .partner-logo-box {
   background-color: #242424;
   border-color: #343A40;
+}
+
+html.dark-mode .partner-logo-box:hover {
+  border-color: var(--gold);
+}
+
+html.dark-mode .partner-execs-img {
+  filter: none;
+}
+
+html.dark-mode .partner-bbb-img {
+  filter: brightness(0) invert(1);
+}
+
+html.dark-mode .partner-link-text {
+  color: var(--text-muted-dk);
+}
+
+html.dark-mode .partner-logo-box:hover .partner-link-text {
+  color: var(--gold);
 }
 
 /* Accordion in Dark Mode */
